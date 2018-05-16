@@ -98,23 +98,32 @@ header{
     padding: 0 1rem;
 }
 .goods_describe_text{
-    height:3.6rem;
+    max-width: 28rem;
+    height:3.5rem;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     overflow: hidden;
     font-size: 1.4rem;
 }
+.goods_operation{
+    width: 9rem;
+    padding-top: 3rem;
+    /*border: .1rem solid #ccc;*/
+}
+.goods_operation ul li{
+    float: left;
+}
 .goods_add{
-    margin-top: 2rem;
-    width:1.6rem;
-    height:1.6rem;
-    font-size: 2.5rem;
+    /*margin-top: 2rem;*/
+    width:1.4rem;
+    height:1.4rem;
+    font-size: 2rem;
     font-weight: bold;
-    border: .2rem solid #f5574e;
+    border: .1rem solid #f5574e;
     color:#f5574e;
     border-radius: 50%;
-    line-height: 1.4rem;
+    line-height: 1rem;
     text-align: center;
 }
 .goods_money{
@@ -158,9 +167,11 @@ footer{
 }
 .balance{
     width:50%;
+    height: 4rem;
     float: right;
     background: #ff703a;
     color:white;
+    border:none;
 }
 
 .slide-fade-enter-active {

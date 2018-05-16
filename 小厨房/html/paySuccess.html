@@ -4,15 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>支付成功</title>
-    <link rel="icon" type="image/x-icon" href="./img/logo.png"/>
     <link rel="stylesheet" href="./css/paySuccess.css">
-    <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="./js/vue.min.js"></script>
 </head>
 <body>
 <header>
     <div>
-        <a href="firmOrder">
+        <a href="firmOrder.html">
             <img src="images/xiangzuo1.png" alt="">
         </a>
     </div>
@@ -44,24 +41,11 @@
         </p>
     </p>
 </div>
-<footer id="foot">
-    <a href="firmOrder">
+<footer>
+    <a href="firmOrder.html">
         <div class="left_btn btn">我的订单</div>
     </a>
-    <div class="right_btn btn" @click="jimp_html('fair')">返回市集</div>
+    <div class="right_btn btn">返回市集</div>
 </footer>
 </body>
-
-<script type="text/javascript">
-    $(function(){
-        let foot=new Vue({
-            el:'#foot',
-            methods:{
-                jimp_html:function(message){
-                    location=message;
-                },
-            }
-        })
-    })
-</script>
 </html>

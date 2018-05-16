@@ -160,7 +160,7 @@ header{
 .bottom_hr{
     border-bottom: .1rem solid #f2f2f2;
 }
-.radio img{
+.radio input{
     width:1.2rem;
     height:1.2rem;
     border:.1rem solid #ccc;
@@ -192,6 +192,99 @@ footer span{
     font-weight: bold;
     margin: 0 0.5rem;
 }
+.box{
+    width:100%;
+    height:41.6rem;
+    position: absolute;
+    bottom: 0;
+    background: white;
+    z-index: 999;
+    /*border:.1rem solid #ccc;*/
+}
+.box .title{
+    padding: 1rem;
+    border-bottom: .1rem solid #f6f6f6;
+    overflow: hidden;
+}
+.box .title_icon{
+    float: left;
+}
+.box .title_text{
+    width:93%;
+    float: right;
+    text-align: center;
+    font-size: 1.8rem;
+    /*font-weight: bold;*/
+}
+.box .title_info{
+    text-align: center;
+    font-size: 1.6rem;
+    padding: 1rem;
+}
+.box .firm_input{
+    height:4rem;
+    padding: 1.1rem;
+    overflow: hidden;
+    /*background: url("../images/inputbg.png");*/
+}
+.box .firm_input input{
+    width: 92%;
+    height:100%;
+    border:none;
+    border:.1rem solid #f6f6f6;
+    font-size: 3rem;
+    padding-left: 2rem;
+    letter-spacing: 4rem;
+    background: url("../images/inputbg.png") no-repeat;
+
+}
+.box .firm_input ul li{
+    width:15.8%;
+    height:4rem;
+    line-height: 4rem;
+    float: left;
+    text-align: center;
+    border: .1rem solid #f3f3f3;
+}
+.box .forget_paw{
+    padding: 1rem;
+    text-align: right;
+    color: deepskyblue;
+}
+.box .box_btn{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+}
+.box .box_btn>div{
+    width:32.7%;
+    height:5rem;
+    border:.1rem solid #f6f6f6;
+    line-height: 5rem;
+    text-align: center;
+    font-size: 3.2rem;
+}
+.box .btnBj{
+    background: #ccc;
+}
+.mongban{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: black;
+    bottom: 0;
+    opacity: 0.5;
+}
+
+
+
+
+
+
+
+
+
 
 
 

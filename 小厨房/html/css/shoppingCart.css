@@ -24,13 +24,12 @@ header span{
     color:#f5574e;
 }
 .main{
+    padding-left: 1rem;
     overflow: hidden;
     background: white;
 }
 .main_once{
-    width: 92%;
     overflow: hidden;
-    margin: 0 auto;
     /*background: #f5574e;*/
 }
 .whole{
@@ -128,8 +127,6 @@ header span{
     height: 100%;
     outline: none;
 }
-
-
 footer{
     width:100%;
     /*height:4rem;*/
@@ -160,10 +157,14 @@ footer{
     height: 3.2rem;
     background: #f5574e;
     float:right;
-    color: white;
     text-align: center;
     line-height: 3.2rem;
     margin: 0.5rem 1rem;
+}
+.footer_btn input{
+    background: #f5574e;
+    border: none;
+    color: white;
 }
 .footer_text_p1{
     margin-top: 0.1rem;

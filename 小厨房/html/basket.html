@@ -4,15 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>菜篮子</title>
-    <link rel="icon" type="image/x-icon" href="./img/logo.png"/>
     <link rel="stylesheet" href="./css/basket.css">
-    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="./js/vue.min.js"></script>
     <script src="./js/basket.js"></script>
 </head>
 <body>
-<header id="Top">
-    <div @click="jimp_html('index')">
+<header>
+    <div>
         <img src="images/xiangzuo1.png" alt="">
     </div>
     <div>菜篮子</div>
@@ -20,10 +17,10 @@
         <img src="images/shortcut-nav1.png" alt="">
     </div>
 </header>
-<div class="list_block" id="Main">
+<div class="list_block">
     <div class="list_block_title">
         <div>根本停不下来的糖醋排骨</div>
-        <div @click="jimp_html('menuDetails')">
+        <div>
             <img src="images/xiangyou.png" alt="">
         </div>
     </div>
@@ -89,7 +86,7 @@
         </li>
     </ul>
 </div>
-    <a href="wholeBuy">
+    <a href="wholeBuy.html">
         <div class="btn">一键买齐</div>
     </a>
 </body>

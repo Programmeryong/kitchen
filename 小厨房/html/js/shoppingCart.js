@@ -1,4 +1,30 @@
 $(function () {
+        let app=new Vue({
+            el:'#myApp',
+            data:{
+                name:'dada',
+                goods_cart:[],
+            },
+            methods:{
+
+            }
+        });
+
+    function getShoppingCartList() {
+        $.ajax({
+            type:'get',
+            url:'/api/getShoppingCartList',
+            dataType:'json',
+            success:function (json) {
+                console.log('goods_cart:',json);
+                for(let i=0;i<json.list.length;i++){
+                    app.goods_cart.push(json.list[i]);
+                }
+            }
+        });
+    }
+    getShoppingCartList();
+
     Vue.component('chec-multi',{
         data(){
             return {
@@ -128,7 +154,7 @@ $(function () {
                         // console.log(list[index]['buer2'])
                         if ( list[index]['buer2'] ) {
                             oThis.totalMoney+= parseFloat(item.price) * parseFloat(item.num);
-                           allMoey=Math.floor(oThis.totalMoney*100)/100;
+                            allMoey=Math.floor(oThis.totalMoney*100)/100;
 
                         }
                         // console.log( oThis.totalMoney);
