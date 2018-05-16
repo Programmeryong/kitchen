@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>一键全购</title>
-    <link rel="icon" type="image/x-icon" href="./img/logo.png"/>
     <link rel="stylesheet" href="./css/wholeBuy.css">
-    <script src="js/vue.js"></script>
     <script src="js/jquery.min.js"></script>
+    <script src="js/vue.js"></script>
+    <!--<script src="https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js"></script>-->
     <script src="./js/wholeBuy.js"></script>
 </head>
 <body>
@@ -20,7 +20,7 @@
         </div>
         <div>一键买齐懒人版糖醋排骨</div>
         <div>
-            <a href="shoppingCart">
+            <a href="shoppingCart.html">
                 <img src="images/gouwuche.png" alt="">
             </a>
         </div>
@@ -57,35 +57,55 @@
             <div class="list_title">猪肋排/500g</div>
             <div class="goods">
                 <div class="goods_img">
-                    <img src="images/img68160918cc8f8.jpg" alt="">
+                    <img :src="x.com_img" alt="">
                 </div>
                 <div class="goods_describe">
-                    <p class="goods_describe_text">{{x.goods_describe}}</p>
-                    <p class="goods_money">￥{{x.goods_price}}</p>
+                    <p class="goods_describe_text">{{x.com_name}}</p>
+                    <p class="goods_money">￥{{x.com_price}}</p>
                 </div>
-                <div class="goods_add" @click="addgoods_cart(index)">+</div>
+                <div class="goods_operation">
+                    <ul>
+                        <!--<li class="goods_add" @click="delgoods_cart(index)" v-show="x.com_number"><span>-</span></li>-->
+                        <!--<li style="padding: 0 .5rem;"><span v-show="x.com_number">{{x.com_number}}</span></li>-->
+                        <li class="goods_add" style="position: absolute;right: 1rem;" @click="addgoods_cart(index)"><span>+</span></li>
+                    </ul>
+                </div>
             </div>
             <transition name="slide-fade">
-                <div v-show="x.state">
+                <div v-if="x.state=0|x.state">
                     <div class="goods">
                         <div class="goods_img">
                             <img src="images/4.png" alt="">
                         </div>
                         <div class="goods_describe">
-                            <p class="goods_describe_text">{{x.goods_describe}}</p>
-                            <p class="goods_money">￥{{x.goods_price}}</p>
+                            <p class="goods_describe_text">{{x.com_name}}</p>
+                            <p class="goods_money">￥{{x.com_price}}</p>
                         </div>
-                        <div class="goods_add" @click="addgoods_cart(index)">+</div>
+                        <!--<div class="goods_add" @click="addgoods_cart(index)">+</div>-->
+                        <div class="goods_operation">
+                            <ul>
+                                <!--<li class="goods_add" @click="delgoods_cart(index)" v-show="x.com_number"><span>-</span></li>-->
+                                <!--<li style="padding: 0 .5rem;"><span v-show="x.com_number">{{x.com_number}}</span></li>-->
+                                <li class="goods_add" style="position: absolute;right: 1rem;" @click="addgoods_cart(index)"><span>+</span></li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="goods">
                         <div class="goods_img">
                             <img src="images/4.png" alt="">
                         </div>
                         <div class="goods_describe">
-                            <p class="goods_describe_text">{{x.goods_describe}}</p>
-                            <p class="goods_money">￥{{x.goods_price}}</p>
+                            <p class="goods_describe_text">{{x.com_name}}</p>
+                            <p class="goods_money">￥{{x.com_price}}</p>
                         </div>
-                        <div class="goods_add" @click="addgoods_cart(index)">+</div>
+                        <!--<div class="goods_add" @click="addgoods_cart(index)">+</div>-->
+                        <div class="goods_operation">
+                            <ul>
+                                <!--<li class="goods_add" @click="delgoods_cart(index)" v-show="x.com_number"><span>-</span></li>-->
+                                <!--<li style="padding: 0 .5rem;"><span v-show="x.com_number">{{x.com_number}}</span></li>-->
+                                <li class="goods_add" style="position: absolute;right: 1rem;" @click="addgoods_cart(index)"><span>+</span></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
@@ -99,9 +119,9 @@
     </div>
     <footer>
         <div class="price">￥{{wholeMoney}}</div>
-        <a href="shoppingCart">
-            <div class="balance">结算</div>
-        </a>
+        <form method="get" action="">
+            <a href="shoppingCart.html"><input type="button"  class="balance" value="结算" @click="balance()"/></a>
+        </form>
     </footer>
 </div>
 
