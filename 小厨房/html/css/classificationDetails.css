@@ -149,4 +149,7 @@ footer .box3_1,footer .box3_1 a{
     footer .box3 a{
         font-size:1em;
     }
+    .glyphicon{
+        margin-top: .2em;
+    }
 }
