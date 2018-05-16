@@ -93,4 +93,17 @@
     </footer>
 
 </body>
+<script type="text/javascript">
+    $(function(){
+        $("#xx").click(function(){
+            if($(this).hasClass("iconfont icon-kongxinaixin")){
+                $(this).removeClass("iconfont icon-kongxinaixin");
+                $(this).addClass("glyphicon glyphicon-heart");
+            }else{
+                $(this).removeClass("glyphicon glyphicon-heart");
+                $(this).addClass("iconfont icon-kongxinaixin");
+            }    
+        });
+    })
+</script>
 </html>

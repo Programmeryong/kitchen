@@ -95,7 +95,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-4 col-xs-4 text-center box3 box3_1">
-                    <i class="iconfont icon-kongxinaixin"></i>
+                    <i id="xx" class="iconfont icon-kongxinaixin"></i>
                     <a href="#">收藏</a>
                 </div>
                 <div class="col-sm-4 col-xs-4 text-center box3">
@@ -111,4 +111,17 @@
     </footer>
 
 </body>
+<script type="text/javascript">
+    $(function(){
+        $("#xx").click(function(){
+            if($(this).hasClass("iconfont icon-kongxinaixin")){
+                $(this).removeClass("iconfont icon-kongxinaixin");
+                $(this).addClass("glyphicon glyphicon-heart");
+            }else{
+                $(this).removeClass("glyphicon glyphicon-heart");
+                $(this).addClass("iconfont icon-kongxinaixin");
+            }    
+        });
+    })
+</script>
 </html>

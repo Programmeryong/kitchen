@@ -61,8 +61,8 @@
 				<div class="tx">
 					<img src="./img/rt1.png">
 				</div>
-				<div class="gz">
-					<p>关注</p>
+				<div @click="guanzhu()" class="gz">
+					<p  v-for="y in list1">{{y.guanzhu}}</p>
 				</div>
 			</div>
 		</div>
