@@ -5,11 +5,15 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>确认订单</title>
     <link rel="stylesheet" href="./css/firmOrder.css">
+     <script src="js/vue.js"></script>
     <script src="js/jquery.min.js"></script>
-    <script src="js/vue.js"></script>
     <script src="./js/firmOrder.js"></script>
 </head>
 <body>
+    <div id="mimacuowu">
+        <p>密码错误</p>
+        <button class='yes'>确定</button>
+    </div>
 <div id="myApp">
 <header>
     <div>
@@ -47,17 +51,18 @@
         </ul>
     </div>
     <div style="background: white">
-        <div class="main_goods bottom_hr">
+        <div class="main_goods bottom_hr" v-for="x in goods_cart">
             <div class="main_goods_img">
-                <img src="images/img771609191aaf8_02.jpg" alt="">
+                <img :src="x.com_img" alt="">
             </div>
             <div class="main_goods_text">
-                <p style="height: 3rem;overflow: hidden">监考老师大黄据当时复活甲空间还是自动分解原味核桃250g</p>
+                <!--<p style="height: 3.2rem;overflow: hidden">监考老师大黄据当时复活甲空间还是自动分解原味核桃250g</p>-->
+                <p style="height: 3.2rem;overflow: hidden">{{x.com_name}}</p>
                 <p style="margin-top: 10%;">一斤袋装</p>
             </div>
             <div>
-                <p>￥35.00</p>
-                <p style="text-align: right;font-size: 1rem;color: #999;">X1</p>
+                <p>￥{{x.com_price}}</p>
+                <p style="text-align: right;font-size: 1rem;color: #999;">X{{x.com_number}}</p>
             </div>
         </div>
     </div>
@@ -69,7 +74,7 @@
         </div>
         <div class="transport_info bottom_hr">
             <div class="freight">合计:</div>
-            <div class="postage">￥35.00</div>
+            <div class="postage">￥{{all_price}}</div>
         </div>
     </div>
 
@@ -134,40 +139,12 @@
 
 <footer>
     <span>实付款:</span>
-    <span>￥35.00</span>
+    <span>￥{{all_price}}</span>
     <a href="#"><span class="footer_btn" @click="show=true">付款</span></a>
 </footer>
 <box v-show="show" id="box"></box>
-    <!--<div class="box">-->
-        <!--<div class="title">-->
-            <!--<div class="title_icon">-->
-                <!--<img src="images/cha.png" alt="">-->
-            <!--</div>-->
-            <!--<div class="title_text">输入支付密码</div>-->
-        <!--</div>-->
-        <!--<div class="title_info">付款金额<span>1</span>元</div>-->
-        <!--<div class="firm_input">-->
-            <!--<input type="password" id="padInput" maxlength="6" min="0" max="9">-->
-        <!--</div>-->
-        <!--<div class="forget_paw">忘记密码？</div>-->
-        <!--<div class="box_btn">-->
-            <!--<div>1</div>-->
-            <!--<div>2</div>-->
-            <!--<div>3</div>-->
-            <!--<div>4</div>-->
-            <!--<div>5</div>-->
-            <!--<div>6</div>-->
-            <!--<div>7</div>-->
-            <!--<div>8</div>-->
-            <!--<div>9</div>-->
-            <!--<div class="btnBj"></div>-->
-            <!--<div>0</div>-->
-            <!--<div class="btnBj">-->
-                <!--<img src="images/shanchu.png" alt="">-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
     <div class="mongban" v-show="show" @click="show=false"></div>
 </div>
+
 </body>
 </html>

@@ -1,4 +1,4 @@
-$(function () {
+﻿$(function () {
 
     Vue.component('tab-菜谱1', {
         template: `
@@ -110,6 +110,9 @@ $(function () {
             jimp_html:function(message){
                 location=message;
             },
+            tuichu:function(){
+              location='signin'
+            }
         }
     })
 })

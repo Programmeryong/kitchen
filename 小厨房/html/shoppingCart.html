@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>购物车</title>
+    <link rel="icon" type="image/x-icon" href="./img/logo.png"/>
     <link rel="stylesheet" href="./css/shoppingCart.css">
-    <script src="js/jquery.min.js"></script>
     <script src="js/vue.js"></script>
+    <script src="js/jquery.min.js"></script>
     <script src="./js/shoppingCart.js"></script>
 </head>
 <body>
 <div id="myApp">
     <header>
         <div>
-            <a href="wholeBuy.html"><img src="images/xiangzuo1.png" alt=""></a>
+            <a href="wholeBuy"><img src="images/xiangzuo1.png" alt=""></a>
         </div>
         <div>购物车</div>
         <div>
@@ -21,34 +22,11 @@
         </div>
     </header>
     <div id="Select" class="main">
-        <chec-multi></chec-multi>
+        <chec-multi :goods_cart="goods_cart" ></chec-multi>
         <!--<div class="main_once">-->
-            <!--<div class="radio">-->
-                <!--<input type="checkbox" class="checkbox">-->
-                <!--&lt;!&ndash;<img src="images/gou.png" alt="">&ndash;&gt;-->
-            <!--</div>-->
-            <!--<div class="main_text">味BACK</div>-->
-        <!--</div>-->
-        <!--<div class="main_list" v-for="x in goods_cart">-->
-            <!--<div class="main_list_radio radio">-->
-                <!--<input type="checkbox" class="checkbox">-->
-                <!--&lt;!&ndash;<img src="images/gou.png" alt="">&ndash;&gt;-->
-            <!--</div>-->
-            <!--<div class="main_text underline">-->
-                <!--<div class="main_text_left">-->
-                    <!--<img :src="x.com_img" alt="">-->
-                <!--</div>-->
-                <!--<div class="main_text_right">-->
-                    <!--<p>{{x.com_name}}</p>-->
-                    <!--<p class="main_text_right_min">核桃糕1盒</p>-->
-                    <!--<div>-->
-                        <!--<div class="main_list_price">￥{{x.com_price}}</div>-->
-                        <!--<div>-->
-                            <!--<input type="number" :value="x.com_number" class="main_list_number"/>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
+            <!--通过商家全选，显示商家盒子-->
+            <!--单选商品，显示商品-->
+
         <!--</div>-->
         <div class="main_footer">已享全店包邮</div>
     </div>
@@ -56,8 +34,7 @@
     <footer>
         <div class="footer_left">
         <span class="radio">
-            <!--<input type="checkbox" class="checkbox" @click="checkChang()">-->
-            <div :class="{ checkbox_nex: true, 'activeback': buer1 }" @click="quanxuan()"></div>
+           <div :class="{ checkbox_nex: true, 'activeback': buer1 }" @click="quanxuan()"></div>
         </span>
             <span class="wholeSelect">全选</span>
         </div>
@@ -66,14 +43,9 @@
                 <p class="footer_text_p1">合计 ￥{{total}}</p>
                 <p class="footer_text_p2">不含运费</p>
             </div>
-            <!--<a href="firmOrder.html">-->
-                <!--<div class="footer_btn">结算（0）</div>-->
-            <!--</a>-->
-            <div class="footer_btn">
-                <form action="firmOrder" method="get">
-                    <input type="submit" value="结算（0）"/>
-                </form>
-            </div>
+            <a href="firmOrder">
+                <div class="footer_btn">结算</div>
+            </a>
         </div>
     </footer>
 </div>

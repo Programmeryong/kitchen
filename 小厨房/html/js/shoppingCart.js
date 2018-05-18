@@ -1,52 +1,28 @@
 $(function () {
-        let app=new Vue({
-            el:'#myApp',
-            data:{
-                name:'dada',
-                goods_cart:[],
-            },
-            methods:{
-
-            }
-        });
-
-    function getShoppingCartList() {
-        $.ajax({
-            type:'get',
-            url:'/api/getShoppingCartList',
-            dataType:'json',
-            success:function (json) {
-                console.log('goods_cart:',json);
-                for(let i=0;i<json.list.length;i++){
-                    app.goods_cart.push(json.list[i]);
-                }
-            }
-        });
-    }
-    getShoppingCartList();
 
     Vue.component('chec-multi',{
+        props:['goods_cart'],
         data(){
             return {
                 shujv:[
                     {
                         name : '味BACK',
                         checked : false,
-                        list : [
-                            {pic:'images/img34316092acdef8.png',buer2:false, text:'滴答滴|台湾进口樱桃爷爷原味南枣核桃糕250g', title:'核桃糕1盒', price:'21.9',num:1},
-                            {pic:'images/img34616092b2d650.png',buer2:false, text:'【外婆润喉糖】味BACK|潮汕手工润喉糖', title:'润喉糖1盒', price:'21.9',num:1},
-                            {pic:'images/img34416092b01f00.png',buer2:false, text:'【圣诞特惠】味BACK|新疆树干杏干', title:'杏干1盒', price:'21.9',num:1},
-                        ],
+                        list : this.goods_cart,
+                            // {pic:'images/img34316092acdef8.png',buer2:false, text:'滴答滴|台湾进口樱桃爷爷原味南枣核桃糕250g', title:'核桃糕1盒', price:'21.9',num:1},
+                            // {pic:'images/img34616092b2d650.png',buer2:false, text:'【外婆润喉糖】味BACK|潮汕手工润喉糖', title:'润喉糖1盒', price:'21.9',num:1},
+                            // {pic:'images/img34416092b01f00.png',buer2:false, text:'【圣诞特惠】味BACK|新疆树干杏干', title:'杏干1盒', price:'21.9',num:1},
+
                     },
-                    {
-                        name : '味BACK',
-                        checked : false,
-                        list : [
-                            {pic:'images/img34316092acdef8.png',buer2:false, text:'滴答滴|台湾进口樱桃爷爷原味南枣核桃糕250g', title:'核桃糕1盒', price:'21.9',num:1},
-                            {pic:'images/img34616092b2d650.png',buer2:false, text:'【外婆润喉糖】味BACK|潮汕手工润喉糖', title:'润喉糖1盒', price:'21.9',num:1},
-                            {pic:'images/img34416092b01f00.png',buer2:false, text:'【圣诞特惠】味BACK|新疆树干杏干', title:'杏干1盒', price:'21.9',num:1},
-                        ],
-                    }
+                    // {
+                    //     name : '味BACK',
+                    //     checked : false,
+                    //     // list : [
+                    //     //     {pic:'images/img34316092acdef8.png',buer2:false, text:'滴答滴|台湾进口樱桃爷爷原味南枣核桃糕250g', title:'核桃糕1盒', price:'21.9',num:1},
+                    //     //     {pic:'images/img34616092b2d650.png',buer2:false, text:'【外婆润喉糖】味BACK|潮汕手工润喉糖', title:'润喉糖1盒', price:'21.9',num:1},
+                    //     //     {pic:'images/img34416092b01f00.png',buer2:false, text:'【圣诞特惠】味BACK|新疆树干杏干', title:'杏干1盒', price:'21.9',num:1},
+                    //     // ],
+                    // }
 
                 ],
                 class:['checkbox_nex'],
@@ -57,21 +33,21 @@ $(function () {
             <div class="main_once" v-for="(x,index) in shujv" >
                  <div class="whole">
                     <div :class="{ checkbox_nex: true, 'activeback': x.checked }" @click="business(index)"></div>
-                    <div class="main_text">{{x.name}}</div>
+                    <div class="main_text">味BACK</div>
                  </div>
                  <div class="main_listBox" v-for="(y,index1) in x.list">
                       <div class="left_selet">
                             <div  :class="{checkbox_nex: true,'activeback':y.buer2}" @click="checkChang(index1,index)" ></div>
                       </div>
                       <div class="cen_pic">
-                            <img :src="y.pic" alt="">
+                            <img :src="y.com_img" alt="">
                       </div>
                       <div class="righ_cen">
-                            <p class="jieshao">{{y.text}}</p>
-                            <p class="main_text_right_min">{{y.title}}</p>
+                            <p class="jieshao">{{y.com_name}}</p>
+                            <p class="main_text_right_min">核桃糕1盒</p>
                             <p class="price_num">
-                                  <span class="price">￥{{y.price}}</span>
-                                  <input type="number" v-model.number="y.num" min="0">
+                                  <span class="price">￥{{y.com_price}}</span>
+                                  <input type="number" :value="y.com_number" min="0">
                             <!--num为数量-->
                             </p>
                       </div>
@@ -82,6 +58,20 @@ $(function () {
         `,
 
         methods:{
+                getGoodsList:function() {
+            // console.log(./api/getGoodsList)
+                $.ajax({
+                    url:'./api/getGoodsList',
+                    type:'get',
+                    dataType:'json',
+                    success:function (json) {
+                        for(let i=0;i<json.list.length;i++){
+                            this.goods_cart.push(json.list[i]);
+                        }
+                        // console.log('goods:',app.goods);
+                    }
+                });
+            },
             checkChang:function (index1,index) {
                 this.shujv[index].list[index1].buer2=!this.shujv[index].list[index1].buer2;
                 let len=this.shujv[index].list;
@@ -119,6 +109,7 @@ $(function () {
                         flag = false;
                     }
                 }
+                console.log(index);
                 flag == true ? this.shujv[index]['checked'] = true : this.shujv[index]['checked'] = false;
 
                 this.cal(index);
@@ -132,7 +123,7 @@ $(function () {
                     // console.log(list[index]['buer2'])
                     if ( list[index]['buer2'] ) {
                         //parseFloat(item.price)商品价格*parseFloat(item.num)商品数量
-                        everyStoreMoney += parseFloat(item.price) * parseFloat(item.num);
+                        everyStoreMoney += parseFloat(item.com_price) * parseFloat(item.com_number);
                     }
                 });
                 //放回出结果
@@ -153,8 +144,8 @@ $(function () {
                     list.forEach(function(item, index, arr) {
                         // console.log(list[index]['buer2'])
                         if ( list[index]['buer2'] ) {
-                            oThis.totalMoney+= parseFloat(item.price) * parseFloat(item.num);
-                            allMoey=Math.floor(oThis.totalMoney*100)/100;
+                            oThis.totalMoney+= parseFloat(item.com_price) * parseFloat(item.com_number);
+                           allMoey=Math.floor(oThis.totalMoney*100)/100;
 
                         }
                         // console.log( oThis.totalMoney);
@@ -206,10 +197,11 @@ $(function () {
     let app=new Vue({
         el:'#myApp',
         data:{
+            goods_cart:[],
             buer:false,
             buer1:false,
             class:['checkbox_nex'],
-            total:'0'
+            total:'0',
         },
         methods:{
             quanxuan:function () {
@@ -229,6 +221,35 @@ $(function () {
                 }
 
             })
+        }
+    });
+
+    // function getGoodsList() {
+    //     // console.log(./api/getGoodsList)
+    //     $.ajax({
+    //         url:'./api/getGoodsList',
+    //         type:'get',
+    //         dataType:'json',
+    //         success:function (json) {
+    //             for(let i=0;i<json.list.length;i++){
+    //                 goods.goods_cart.push(json.list[i]);
+    //             }
+    //             // console.log('goods:',app.goods);
+    //         }
+    //     });
+    // }
+    // getGoodsList();
+
+    $.ajax({
+        url:'./api/getShoppingCartList',
+        type:'get',
+        dataType:'json',
+        success:function (json) {
+            console.log(json);
+            for(let i=0;i<json.list.length;i++){
+                app.goods_cart.push(json.list[i]);
+            }
+            console.log('goods',app.goods_cart);
         }
     });
 });

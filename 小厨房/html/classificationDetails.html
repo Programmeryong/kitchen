@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>分类详情</title>
-    <link rel="icon" type="image/x-icon" href="./img/logo.png"/>
-    <link rel="stylesheet" href="css/iconfont.css">
-    <link rel="stylesheet" href="bootscss/bootstrap.min.css">
-    <link rel="stylesheet" href="bootscss/bootstrap-theme.min.css" />
-    <link rel="stylesheet" type="text/css" href="css/classificationDetails.css">
-    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="./js/vue.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/classificationDetails.js"></script>
+    <link rel="icon" type="image/x-icon" href="../img/logo.png"/>
+    <link rel="stylesheet" href="../css/iconfont.css">
+    <link rel="stylesheet" href="../bootscss/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootscss/bootstrap-theme.min.css" />
+    <link rel="stylesheet" type="text/css" href="../css/classificationDetails.css">
+    <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="../js/vue.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/classificationDetails.js"></script>
 </head>
 <body>
     <header id="Top" class="navbar-fixed-top">
         <div class="container-fluid">
             <div class="row box2">
-                <i class="glyphicon glyphicon-menu-left" @click="jimp_html('classifylist')"></i>
+                <i class="glyphicon glyphicon-menu-left" @click="jimp_html('index.html')"></i>
                 <i class="iconfont icon-tanxintanhua"></i>
                 <i class="iconfont icon-pengyouquan"></i>
                 <i class="iconfont icon-diandiandian"></i>
@@ -41,48 +41,21 @@
                         <p>来自:下厨房</p>
                         <!--<p class="text-left">大家说好才是真的好</p>-->
                     </div>
-
+<!--:src="x.food_img"-->
                     <!--模板循环-->
-                    <div class="box1_1">
+                    <div class="box1_1" v-for="x in list">
                         <div class="box1_1_1">
-                            <img src="images/03.png" alt="..." class="img1"  @click="jimp_html('menuDetails')">
-                            <p class="text-left p1" @click="jimp_html('menuDetails')">懒人版糖醋排骨</p>
+                            <img :src="x.food_img" alt="..." class="img1"  @click="jimp_html('menuDetails.html')">
+                            <p class="text-left p1" @click="jimp_html('menuDetails.html')">{{x.food_name}}</p>
                             <p class="text-left p2">
-                                <span>8.5分</span>
-                                <span>51118个人做过</span>
+                                <span>{{x.food_score}}</span>
+                                <span>{{x.food_peopel}}个人做过</span>
                             </p>
-                            <img src="images/02.JPG" alt="..." class="img-circle img2" >
-                            <span class="sp1">小慈</span>
+                            <img :src="x.user_img" alt="..." class="img-circle img2" >
+                            <span class="sp1">{{x.user_name}}</span>
                         </div>
                     </div>
 
-                    <div class="box1_1">
-                        <div class="box1_1_1">
-                            <img src="images/01.jpg" alt="..." class="img1">
-                            <p class="text-left p1">可乐鸡翅</p>
-                            <p class="text-left p2">
-                                <span>8.5分</span>
-                                <span>51118个人做过</span>
-                            </p>
-                            <img src="images/04.JPG" alt="..." class="img-circle img2" >
-                            <span class="sp1">小慈</span>
-                        </div>
-                    </div>
-
-                    <div class="box1_1">
-                        <div class="box1_1_1">
-                            <img src="images/05.jpg" alt="..." class="img1">
-                            <p class="text-left p1">麻婆豆腐</p>
-                            <p class="text-left p2">
-                                <span>8.5分</span>
-                                <span>51118个人做过</span>
-                            </p>
-                            <img src="images/02.JPG" alt="..." class="img-circle img2" >
-                            <span class="sp1">小慈</span>
-                        </div>
-
-
-                    </div>
 
                 </div>
                 <!--右边空白线-->
@@ -91,24 +64,24 @@
         </div>
     </div>
 
-    <footer class="navbar-fixed-bottom">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-4 col-xs-4 text-center box3 box3_1">
-                    <i class="iconfont icon-kongxinaixin"></i>
-                    <a href="#">收藏</a>
-                </div>
-                <div class="col-sm-4 col-xs-4 text-center box3">
-                    <i class="iconfont icon-add_note"></i>
-                    <a href="#">加菜单</a>
-                </div>
-                <div class="col-sm-4 col-xs-4 text-center box3">
-                    <i class="iconfont icon-xiangji"></i>
-                    <a href="#">传作品</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <!--<footer class="navbar-fixed-bottom">-->
+        <!--<div class="container-fluid">-->
+            <!--<div class="row">-->
+                <!--<div class="col-sm-4 col-xs-4 text-center box3 box3_1">-->
+                    <!--<i class="iconfont icon-kongxinaixin"></i>-->
+                    <!--<a href="#">收藏</a>-->
+                <!--</div>-->
+                <!--<div class="col-sm-4 col-xs-4 text-center box3">-->
+                    <!--<i class="iconfont icon-add_note"></i>-->
+                    <!--<a href="addMenu.html">加菜单</a>-->
+                <!--</div>-->
+                <!--<div class="col-sm-4 col-xs-4 text-center box3">-->
+                    <!--<i class="iconfont icon-xiangji"></i>-->
+                    <!--<a href="#">传作品</a>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</footer>-->
 
 </body>
 </html>

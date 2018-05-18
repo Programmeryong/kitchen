@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>支付成功</title>
+    <link rel="icon" type="image/x-icon" href="./img/logo.png"/>
     <link rel="stylesheet" href="./css/paySuccess.css">
+    <script src="js/vue.js"></script>
+    <script src="js/jquery.min.js"></script>
 </head>
 <body>
 <header>
@@ -45,7 +48,22 @@
     <a href="firmOrder.html">
         <div class="left_btn btn">我的订单</div>
     </a>
-    <div class="right_btn btn">返回市集</div>
+    <div id="foot" class="right_btn btn"><a href="myCenter" style="color: #f5574e">返回市集</a></div>
 </footer>
 </body>
+
+<!-- <script type="text/javascript">
+    $(function(){
+    //底部页面跳转
+    let foot=new Vue({
+        el:'#foot',
+        methods:{
+            jimp_html:function(message){
+                location=message;
+            },
+        }
+    })
+    });
+</script> -->
+
 </html>

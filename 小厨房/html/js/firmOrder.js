@@ -1,5 +1,6 @@
 $(function () {
     Vue.component('box',{
+        // props:['goods_cart'],
         template:`<div class="box">
         <div class="title">
             <div class="title_icon">
@@ -46,6 +47,16 @@ $(function () {
             close:function () {
                 this.show=false;
             }
+        },
+        computed:{
+            all_price:function(){
+                let count=0;
+                let allMoney=0;
+                for (let i=0;i<this.goods_cart.length;i++){
+                    allMoney+=this.goods_cart[i].com_number*this.goods_cart[i].com_price;
+                }
+                return allMoney;
+            }
         }
     });
 
@@ -63,7 +74,7 @@ $(function () {
             if(ss==123456){
                 self.location='paySuccess.html';
             }else{
-                alert('密码错误,请重新输入！');
+                $('#mimacuowu').css({display:'block'});
                 ss='';
                 $('#padInput').val(ss);
             }
@@ -73,25 +84,27 @@ $(function () {
         ss=ss.substring(0,ss.length-1);
         $('#padInput').val(ss);
     });
-
+    $('.yes').on('click',function(){
+        $('#mimacuowu').css({display:'none'});
+    });
     $('.title_icon').on('click',function () {
         // alert('aaa');
         $('#box').hide();
         // $('.mongban').hide();
     });
 
-    function getShoppingCartList() {
+    // function getShoppingCartList() {
         $.ajax({
             type:'get',
             url:'/api/getShoppingCartList',
             dataType:'json',
             success:function (json) {
-                console.log('goods_cart:',json);
+                // console.log('goods_cart:',json);
                 for(let i=0;i<json.list.length;i++){
                     app.goods_cart.push(json.list[i]);
                 }
             }
         });
-    }
-    getShoppingCartList();
+    // }
+    // getShoppingCartList();
 });

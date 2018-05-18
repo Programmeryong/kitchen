@@ -71,8 +71,35 @@ $(function(){
                     this.goods[index].status='其他2款';
                 }
             },
+            // 减s
+            delgoods_cart:function (index) {
+                console.log(index);
+                let delgoods={};
+                console.log( this.goods_cart.length);
+                 if(this.goods_cart.length==0){
+                    // this.goods[index].com_number=1;
+                    for(x in this.goods){
+                        delgoods=this.goods[index];
+                    }
+                }else{
+                    for(let i=0;i<this.goods_cart.length;i++){
+                        if(this.goods_cart[i].id!==this.goods[index].id){
+                            // this.goods[index].com_number=1;
+                            for(x in this.goods){
+                                delgoods=this.goods[index];
+                            }
+                        }else{
+                            this.goods_cart[i].com_number--;
+                            return;
+                        }
+                    }
+                }
+                 this.goods_cart.push(delgoods);
+            },
             addgoods_cart:function (index) {
+                // console.log(index)
                 let addgoods={};
+                console.log(this.goods[index])
                 if(this.goods_cart.length==0){
                     // this.goods[index].com_number=1;
                     for(x in this.goods){
@@ -86,24 +113,14 @@ $(function(){
                                 addgoods=this.goods[index];
                             }
                         }else{
-                            this.goods_cart[i].com_number+=1;
+                            this.goods_cart[i].com_number++;
                             return;
                         }
                     }
                 }
                 this.goods_cart.push(addgoods);
             },
-            delgoods_cart:function (index) {
-                if(this.goods_cart.length==0){
-                    this.goods_cart.splice(index,1);
-                }else {
-                    if(this.goods_cart[index].com_number<=0){
-                        this.goods_cart[index].com_number=0;
-                    }else{
-                        this.goods_cart[index].com_number--;
-                    }
-                }
-            },
+            
 
             balance:function(){
                 let that = this;
@@ -144,9 +161,12 @@ $(function(){
         }
     });
     function getGoodsList() {
+         // console.log(./api/getGoodsList)
         $.ajax({
+            url:'./api/getGoodsList',
             type:'get',
-            url:'/api/getGoodsList',
+
+            
             dataType:'json',
             success:function (json) {
                 for(let i=0;i<json.list.length;i++){

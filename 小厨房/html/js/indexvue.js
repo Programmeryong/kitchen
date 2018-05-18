@@ -1,4 +1,4 @@
-window.onload=function (ev) {
+﻿window.onload=function (ev) {
     Vue.component('more-box', {
         props: ['items','pic','name'],
         template:'#classbox',
@@ -70,6 +70,9 @@ window.onload=function (ev) {
         el:'#Top',
         methods:{
             jimp_html:function(message){
+                location=message;
+            },
+	    jimp_html2:function(message){
                 location=message;
             },
         }
